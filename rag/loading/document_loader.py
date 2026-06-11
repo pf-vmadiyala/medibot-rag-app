@@ -17,8 +17,10 @@ base_dir = (Path(__file__).resolve().parents[1] / "data/documents")
 
 def load_documents(base_dir):
     all_documents = []
+    # ITerate through all the folders
     for subfolder in base_dir.iterdir():
         if subfolder.is_dir() and subfolder.name in ROLE_MAP.keys():
+            # ITerate through all the files in the subfolder
             for file in subfolder.iterdir():
                 if file.is_file() and file.suffix.lower() in {'.pdf', '.md'}:
                     docling_obj = parse_file(str(file))
