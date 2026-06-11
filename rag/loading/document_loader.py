@@ -39,8 +39,8 @@ def load_documents(base_dir):
             print("-" * 30)
     return all_documents
 
-
-load_documents(base_dir)
+if __name__ == "__main__":
+    load_documents(base_dir)
                     
 
 
