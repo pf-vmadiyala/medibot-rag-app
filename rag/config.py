@@ -4,6 +4,7 @@ from pathlib import Path
 RAG_ROOT = Path(__file__).resolve().parent
 BASE_DIR = RAG_ROOT / "data/documents"
 DB_PATH = RAG_ROOT / "data/db/qdrant_storage"
+SQLITE_DB_PATH = RAG_ROOT / "data/db/mediassist.db"
 
 # Qdrant Config
 COLLECTION_NAME = "medibot"
