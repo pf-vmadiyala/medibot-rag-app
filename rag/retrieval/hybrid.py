@@ -34,16 +34,18 @@ def hybrid_search(query: str, role: str, limit: int = 10):
             models.Prefetch(
                 query=dense_query_vector,
                 using="dense",
-                limit=limit
+                limit=limit,
+                filter=rbac_filter
             ),
             models.Prefetch(
                 query=sparse_query_vector,
                 using="sparse",
-                limit=limit
+                limit=limit,
+                filter=rbac_filter
             )
         ],
         query=models.FusionQuery(fusion=models.Fusion.RRF),
-        query_filter=rbac_filter,
+        # query_filter=rbac_filter,
         limit=limit,
     )
 
@@ -56,4 +58,24 @@ def hybrid_search(query: str, role: str, limit: int = 10):
             "metadata": point.payload.get("metadata", {})
         })
     return results
+
+
+if __name__ == "__main__":
+    test_query = "What is the policy for leaves?"
+
+    results_n = hybrid_search(test_query, role="nurse", limit=5)
+    for r in results_n:
+        print(len(r))
+        print("Score: "+ str(r["score"]))
+        print("Content: "+r["content"])
+        print("Metadata: "+str(r["metadata"]))
+        print("*" * 20)
+
+    # results_b = hybrid_search(test_query, role="billing_executive", limit=5)
+    # for r in results_b:
+    #     print(len(r))
+    #     print("Score: "+ str(r["score"]))
+    #     print("Content: "+r["content"])
+    #     print("Metadata: "+str(r["metadata"]))
+    #     print("*" * 100)
 
