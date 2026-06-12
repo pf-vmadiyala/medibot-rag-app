@@ -19,3 +19,9 @@ dependencies = [
     "requests>=2.34.2",
     "sentence-transformers>=5.5.1",
 ]
+
+[project.scripts]
+ingest = "rag.indexing.ingest:main"
+
+[tool.uv]
+package = true
