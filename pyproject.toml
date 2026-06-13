@@ -25,5 +25,8 @@ dependencies = [
 [project.scripts]
 ingest = "rag.indexing.ingest:main"
 
+[tool.setuptools]
+packages = ["rag"]
+
 [tool.uv]
 package = true

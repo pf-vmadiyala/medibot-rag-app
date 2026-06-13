@@ -94,5 +94,5 @@ if __name__ == "__main__":
     
     for q in test_queries:
         print(f"\n--- Question: {q} ---")
-        answer = sql_rag_pipeline(q, role="billing_executive")
+        answer = sql_rag_chain(q, role="billing_executive")
         print(f"Answer: {answer}")

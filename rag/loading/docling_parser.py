@@ -13,15 +13,15 @@ def parse_file(file_path: str):
     except:
         raise Exception("Error parsing file")
 
-if __name__ == "__main__":
-    from pathlib import Path
+# if __name__ == "__main__":
+#     from pathlib import Path
     
-    # Path(__file__) is this file: rag/loading/docling_parser.py
-    # .parent.parent takes us back to: rag/
-    test_file = Path(__file__).resolve().parent.parent / "data/documents/general/code_of_conduct.pdf"
+#     # Path(__file__) is this file: rag/loading/docling_parser.py
+#     # .parent.parent takes us back to: rag/
+#     test_file = Path(__file__).resolve().parent.parent / "data/documents/general/code_of_conduct.pdf"
     
-    print(f"Loading test file: {test_file}")
-    markdown_data = parse_file(str(test_file)).export_to_markdown()
-    print(markdown_data)
+#     print(f"Loading test file: {test_file}")
+#     markdown_data = parse_file(str(test_file)).export_to_markdown()
+#     print(markdown_data)
 
 

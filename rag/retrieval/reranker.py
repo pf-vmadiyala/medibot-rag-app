@@ -18,18 +18,18 @@ def reranker(query: str, results: list, top_k: int = 3):
     # Return top k results
     return sorted_results[:top_k]   
 
-if __name__ == "__main__":
-    from rag.retrieval.hybrid import hybrid_search
+# if __name__ == "__main__":
+#     from rag.retrieval.hybrid import hybrid_search
 
-    query = "What is the policy for leaves?"
-    results = hybrid_search(query, role="nurse", limit=5)
+#     query = "What is the policy for leaves?"
+#     results = hybrid_search(query, role="nurse", limit=5)
     
-    for i, r in enumerate(results):
-        print(f"Result {i+1}:\nScore: {r['score']}\nContent: {r['content']}\nMetadata: {r['metadata']}\n")
-    print("*" * 100)
-    rerank_results = reranker(query, results, top_k=5)
-    for i, r in enumerate(rerank_results):
-        print(f"Rerank Result {i+1}:\nScore: {r['score']}\nContent: {r['content']}\nMetadata: {r['metadata']}\n")
+#     for i, r in enumerate(results):
+#         print(f"Result {i+1}:\nScore: {r['score']}\nContent: {r['content']}\nMetadata: {r['metadata']}\n")
+#     print("*" * 100)
+#     rerank_results = reranker(query, results, top_k=5)
+#     for i, r in enumerate(rerank_results):
+#         print(f"Rerank Result {i+1}:\nScore: {r['score']}\nContent: {r['content']}\nMetadata: {r['metadata']}\n")
 
     
         

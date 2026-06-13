@@ -2,25 +2,50 @@
 
 :root {
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
 
-  /* Manus.ai Premium Light Theme Color Palette */
-  --bg-app: #f8f9fa;
-  --bg-sidebar: #f1f2f4;
-  --bg-card: #ffffff;
-  --bg-input: #ffffff;
+  /* Manus.ai Premium Dark Theme Color Palette */
+  --bg-app: #09090b;
+  --bg-sidebar: #18181b;
+  --bg-card: #18181b;
+  --bg-input: #1c1c1f;
 
-  --text-primary: #18181b;
-  --text-secondary: #52525b;
-  --text-muted: #a1a1aa;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
 
-  --border-color: rgba(0, 0, 0, 0.08);
-  --border-focus: rgba(0, 0, 0, 0.2);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(255, 255, 255, 0.2);
 
-  --accent-primary: #18181b;
-  --accent-hover: #27272a;
-  --accent-success: #10b981;
-  --accent-danger: #ef4444;
-  --accent-warning: #f59e0b;
+  --accent-primary: #fafafa;
+  --accent-hover: #e4e4e7;
+  --accent-success: #34d399;
+  --accent-danger: #f87171;
+  --accent-warning: #fbbf24;
+
+  /* Watermark properties for dark theme: blueprint cyan/blue network on black */
+  --chat-bg-filter: none;
+  --chat-bg-opacity: 0.08;
+
+  /* Component colors */
+  --bg-header: rgba(9, 9, 11, 0.85);
+  --bg-user-bubble: #fafafa;
+  --text-user-bubble: #09090b;
+  --bg-badge-rag: rgba(255, 255, 255, 0.03);
+  --bg-citation: #27272a;
+  --bg-citation-hover: #3f3f46;
+  --bg-input-form: rgba(24, 24, 27, 0.9);
+  --border-input-form: rgba(255, 255, 255, 0.1);
+  --bg-send-btn: #fafafa;
+  --bg-send-btn-hover: #e4e4e7;
+  --text-send-btn: #09090b;
+  --bg-send-btn-disabled: #27272a;
+  --text-submit-btn: #09090b;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.12);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
+  --login-gradient-color: rgba(255, 255, 255, 0.02);
+  --bg-demo-btn: #27272a;
+  --bg-demo-btn-hover: #3f3f46;
 }
 
 * {
@@ -48,12 +73,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.12);
+  background: var(--scrollbar-thumb);
   border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25);
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* --- Auth / Login --- */
@@ -62,17 +87,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: radial-gradient(circle at 50% 10%, rgba(0, 0, 0, 0.02), transparent 60%);
+  background: radial-gradient(circle at 50% 10%, var(--login-gradient-color), transparent 60%);
 }
 
 .login-card {
-  background: #ffffff;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   padding: 3rem 2.5rem;
   border-radius: 16px;
   width: 100%;
   max-width: 420px;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -109,7 +134,7 @@ body {
 }
 
 .demo-btn {
-  background: #f4f4f5;
+  background: var(--bg-demo-btn);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   padding: 0.75rem 1.15rem;
@@ -124,8 +149,8 @@ body {
 }
 
 .demo-btn:hover {
-  background: #e4e4e7;
-  border-color: rgba(0, 0, 0, 0.15);
+  background: var(--bg-demo-btn-hover);
+  border-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
 }
 
@@ -141,31 +166,31 @@ body {
 /* Badge colors */
 .role-doctor {
   background: rgba(59, 130, 246, 0.08);
-  color: #2563eb;
+  color: #60a5fa;
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .role-nurse {
   background: rgba(16, 185, 129, 0.08);
-  color: #059669;
+  color: #34d399;
   border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .role-billing_executive {
   background: rgba(245, 158, 11, 0.08);
-  color: #d97706;
+  color: #fbbf24;
   border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
 .role-technician {
   background: rgba(139, 92, 246, 0.08);
-  color: #7c3aed;
+  color: #a78bfa;
   border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
 .role-admin {
   background: rgba(239, 68, 68, 0.08);
-  color: #dc2626;
+  color: #f87171;
   border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
@@ -202,14 +227,14 @@ body {
   width: 100%;
   padding: 0.85rem;
   background: var(--accent-primary);
-  color: #ffffff;
+  color: var(--text-submit-btn);
   border: none;
   border-radius: 10px;
   font-family: var(--font-inter);
   font-size: 0.92rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
   margin-top: 1rem;
 }
 
@@ -258,7 +283,7 @@ body {
 }
 
 .user-profile {
-  background: #ffffff;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   padding: 1rem;
   border-radius: 12px;
@@ -301,7 +326,7 @@ body {
   gap: 0.5rem;
   font-size: 0.78rem;
   color: var(--text-secondary);
-  background: #ffffff;
+  background: var(--bg-card);
   padding: 0.55rem 0.8rem;
   border-radius: 8px;
   border: 1px solid var(--border-color);
@@ -322,7 +347,7 @@ body {
   gap: 0.5rem;
   padding: 0.7rem;
   background: transparent;
-  color: #ef4444;
+  color: #f87171;
   border: 1px solid rgba(239, 68, 68, 0.25);
   border-radius: 8px;
   cursor: pointer;
@@ -344,10 +369,9 @@ body {
   background-color: var(--bg-app);
   position: relative;
   overflow: hidden;
-  /* prevents background overflow */
 }
 
-/* Inverted medical network watermark backdrop (inverted to make it dark grey on light background) */
+/* Medical network watermark backdrop (original dark image on dark background) */
 .chat-window::before {
   content: "";
   position: absolute;
@@ -358,14 +382,10 @@ body {
   background-image: url('/chat-bg.png');
   background-size: cover;
   background-position: center;
-  filter: invert(1);
-  /* Inverts black background to white and nodes to dark grey */
-  opacity: 0.04;
-  /* Faint watermark */
+  filter: var(--chat-bg-filter);
+  opacity: var(--chat-bg-opacity);
   pointer-events: none;
-  /* Let all clicks pass through */
   z-index: 1;
-  /* Sits behind messages and text inputs */
 }
 
 .chat-header {
@@ -375,7 +395,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 2.5rem;
-  background: rgba(248, 249, 250, 0.85);
+  background: var(--bg-header);
   backdrop-filter: blur(12px);
   z-index: 10;
 }
@@ -401,7 +421,6 @@ body {
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  /* Renders on top of the watermark backdrop */
 }
 
 .message {
@@ -417,9 +436,9 @@ body {
 }
 
 .message.user .message-bubble {
-  background: #18181b;
+  background: var(--bg-user-bubble);
   border: none;
-  color: #ffffff;
+  color: var(--text-user-bubble);
   border-radius: 12px;
   padding: 0.85rem 1.15rem;
   max-width: 85%;
@@ -431,14 +450,14 @@ body {
 }
 
 .message.bot .message-bubble {
-  background: #ffffff;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   border-radius: 14px;
   padding: 1.25rem;
   line-height: 1.7;
   width: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Meta Data & Execution Header */
@@ -459,7 +478,7 @@ body {
 }
 
 .badge-rag-type {
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--bg-badge-rag);
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
 }
@@ -488,7 +507,7 @@ body {
 }
 
 .citation-chip {
-  background: #f4f4f5;
+  background: var(--bg-citation);
   border: 1px solid var(--border-color);
   padding: 0.35rem 0.6rem;
   border-radius: 6px;
@@ -498,15 +517,15 @@ body {
 }
 
 .citation-chip:hover {
-  background: #e4e4e7;
-  border-color: rgba(0, 0, 0, 0.15);
+  background: var(--bg-citation-hover);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Refusal Warn Panel */
 .refusal-card .message-bubble {
   border: 1px solid rgba(239, 68, 68, 0.25) !important;
   background: rgba(239, 68, 68, 0.03) !important;
-  color: #dc2626 !important;
+  color: #f87171 !important;
 }
 
 
@@ -519,32 +538,29 @@ body {
   padding: 1.5rem 2.5rem 2rem 2.5rem;
   background: linear-gradient(to top, var(--bg-app) 70%, transparent);
   pointer-events: none;
-  /* Let clicks pass through empty spaces of transparent gradient */
   z-index: 10;
 }
 
 .chat-input-form {
   pointer-events: auto;
-  /* Active inputs clickable */
   display: flex;
   align-items: center;
   gap: 0.75rem;
   max-width: 760px;
   width: 100%;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--bg-input-form);
+  border: 1px solid var(--border-input-form);
   backdrop-filter: blur(20px);
   border-radius: 9999px;
-  /* Pill shaped */
   padding: 0.4rem 0.5rem 0.4rem 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 
 .chat-input-form:focus-within {
-  border-color: rgba(0, 0, 0, 0.25);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--border-focus);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .chat-input {
@@ -563,11 +579,10 @@ body {
 }
 
 .send-btn {
-  background: #18181b;
-  color: #ffffff;
+  background: var(--bg-send-btn);
+  color: var(--text-send-btn);
   border: none;
   border-radius: 50%;
-  /* Perfect circle */
   width: 36px;
   height: 36px;
   display: flex;
@@ -578,13 +593,13 @@ body {
 }
 
 .send-btn:hover {
-  background: #27272a;
+  background: var(--bg-send-btn-hover);
   transform: scale(1.05);
 }
 
 .send-btn:disabled {
-  background: #f4f4f5;
-  color: #a1a1aa;
+  background: var(--bg-send-btn-disabled);
+  color: var(--text-muted);
   cursor: not-allowed;
   transform: none;
 }
@@ -595,7 +610,6 @@ body {
     opacity: 0;
     transform: scale(0.98);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
@@ -607,7 +621,6 @@ body {
     opacity: 0;
     transform: translateY(6px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);

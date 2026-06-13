@@ -67,10 +67,10 @@ def chunk_documents(loaded_docs):
 # A footnote (text)
 # If we didn't use break, the loop would continue running after finding the table. When it reaches the footnote at the end, it would overwrite chunk_type back to "text". By breaking immediately, we lock the chunk type to "table".            
 
-base_dir = Path(__file__).resolve().parents[1] / "data/documents"
-if __name__ == "__main__":
-    loaded_docs = load_documents(base_dir)
-    chunk_documents([loaded_docs[11]])
+# base_dir = Path(__file__).resolve().parents[1] / "data/documents"
+# if __name__ == "__main__":
+#     loaded_docs = load_documents(base_dir)
+#     chunk_documents([loaded_docs[11]])
         
 
     

@@ -44,15 +44,15 @@ def embed_and_upsert_chunks(chunks):
         points.append(point)
     upsert_points(points)
 
-def main():
-    print("Starting ingestion pipeline...")
-    chunks = prepare_chunks(BASE_DIR)
-    print(f"Prepared {len(chunks)} total chunks.")
-    embed_and_upsert_chunks(chunks)
-    print("Ingestion pipeline finished successfully!")
+# def main():
+#     print("Starting ingestion pipeline...")
+#     chunks = prepare_chunks(BASE_DIR)
+#     print(f"Prepared {len(chunks)} total chunks.")
+#     embed_and_upsert_chunks(chunks)
+#     print("Ingestion pipeline finished successfully!")
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
 
     

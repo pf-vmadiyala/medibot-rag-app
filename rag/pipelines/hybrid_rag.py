@@ -63,16 +63,16 @@ def hybrid_rag_chain(query:str, role:str):
     }
 
 
-if __name__ == "__main__":
-    test_queries = [
-        ("What is the leave policy?", "nurse")
-    ]
+# if __name__ == "__main__":
+#     test_queries = [
+#         ("What is the leave policy?", "nurse")
+#     ]
     
-    for q_text, user_role in test_queries:
-        print(f"\n=== Question: {q_text} | Role: {user_role} ===")
-        output = hybrid_rag_pipeline(q_text, role=user_role)
-        print(f"Answer: {output['answer']}")
-        print(f"Sources: {output['sources']}")
+#     for q_text, user_role in test_queries:
+#         print(f"\n=== Question: {q_text} | Role: {user_role} ===")
+#         output = hybrid_rag_chain(q_text, role=user_role)
+#         print(f"Answer: {output['answer']}")
+#         print(f"Sources: {output['sources']}")
     
 
     

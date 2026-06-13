@@ -39,10 +39,10 @@ def load_documents(base_dir):
             print("-" * 30)
     return all_documents
 
-base_dir = (Path(__file__).resolve().parents[1] / "data/documents")
+# base_dir = (Path(__file__).resolve().parents[1] / "data/documents")
 
-if __name__ == "__main__":
-    load_documents(base_dir)
+# if __name__ == "__main__":
+#     load_documents(base_dir)
                     
 
 

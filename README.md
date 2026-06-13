@@ -4,6 +4,60 @@ MediBot is a production-grade healthcare AI assistant built for **MediAssist Hea
 
 ---
 
+## ⚙️ Installation & Setup
+
+### Prerequisites
+* Python 3.10+ and [uv package manager](https://github.com/astral-sh/uv)
+* Node.js v18+ and npm
+
+### 1. Environment Configuration
+Create a `.env` file at the root of the project:
+```env
+GROQ_API_KEY=your_groq_api_key
+GROQ_MODEL=llama-3.3-70b-versatile
+```
+
+### 2. Backend Setup
+Sync virtual environment dependencies and start the uvicorn server:
+```bash
+# Install dependencies
+uv sync
+
+# Run backend API
+uv run uvicorn api:app --port 8000
+```
+The server will start running at `http://localhost:8000`.
+
+### 3. Frontend Setup
+Navigate to the frontend directory, install JavaScript dependencies, and run the Next.js dev server:
+```bash
+cd frontend
+
+# Install packages
+npm install
+
+# Run frontend (on port 3001 to prevent conflict with local Grafana)
+npm run dev -- -p 3001
+```
+Open **`http://localhost:3001`** in your browser to view the app.
+
+### 4. Concurrent Startup (Alternative)
+For convenience, you can start both the FastAPI backend and Next.js frontend concurrently using a single command:
+
+* **macOS / Linux:**
+  ```bash
+  ./run.sh
+  ```
+  This runs both servers concurrently in a single terminal and prints the combined log output. Pressing `Ctrl + C` automatically kills both processes.
+  
+* **Windows:**
+  ```cmd
+  run.bat
+  ```
+  This starts the backend and frontend in separate CMD terminal windows automatically. To stop them, simply close their command windows.
+
+---
+
 ## 🚀 Key Concepts Implemented
 
 1. **Structured Ingestion & Hierarchical Chunking:** Parsed PDF/Markdown documents using layout-aware tools, breaking content down into semantic sections and appending parent heading prefixes to each chunk so the context is never lost.
@@ -12,7 +66,7 @@ MediBot is a production-grade healthcare AI assistant built for **MediAssist Hea
 4. **Cross-Encoder Reranking:** Scored initial query-passage pairs jointly using `sentence-transformers/ms-marco-MiniLM-L-6-v2` to filter the top-10 candidates down to the top-3 most relevant chunks.
 5. **Database-Level RBAC Filtering:** Scoped search queries by injecting the authenticated user's allowed collections directly into the Qdrant filter parameter, blocking access-leakage at the database level rather than filtering downstream.
 6. **SQL RAG Pipeline:** Translated natural language questions to safe SQLite queries for database tables (`claims` and `maintenance_tickets`), routing queries based on user permissions.
-7. **Manus-Style Light UI:** Built a highly polished, responsive Next.js frontend console that mimics the modern layout of Manus.ai, featuring a centered timeline, floating pill input bar, dynamic citation chips, and persistent local storage authentication.
+7. **Light UI:** Built a highly polished, responsive Next.js frontend console that mimics the modern layout of Manus.ai, featuring a centered timeline, floating pill input bar, dynamic citation chips, and persistent local storage authentication.
 
 ---
 
@@ -33,7 +87,7 @@ MediBot is a production-grade healthcare AI assistant built for **MediAssist Hea
 * [rag/pipelines/sql_rag.py](file:///Users/vijaykumar/git/medibot-rag-app/rag/pipelines/sql_rag.py) — Generates SQL queries, runs them against SQLite, and formats results.
 
 ### 4. FastAPI Backend API
-* [rag/api.py](file:///Users/vijaykumar/git/medibot-rag-app/rag/api.py) — Runs FastAPI endpoints (`/login`, `/collections/{role}`, `/chat`, `/health`). Uses an LLM agent classifier to route chat prompts to either Document RAG or SQL RAG.
+* [api.py](file:///Users/vijaykumar/git/medibot-rag-app/api.py) — Runs FastAPI endpoints (`/login`, `/collections/{role}`, `/chat`, `/health`). Uses an LLM agent classifier to route chat prompts to either Document RAG or SQL RAG.
 
 ### 5. Next.js Frontend App
 * [frontend/src/app/page.js](file:///Users/vijaykumar/git/medibot-rag-app/frontend/src/app/page.js) — Single-page React view managing auth states, persistent local storage sessions, citations, and chatbot responses.
@@ -77,45 +131,6 @@ graph TD
 | `billing.ravi` | `password` | `billing_executive` | `billing`, `general` (and DB SQL) |
 | `tech.anand` | `password` | `technician` | `equipment`, `general` |
 | `admin.sys` | `password` | `admin` | **All Collections** (and DB SQL) |
-
----
-
-## ⚙️ Installation & Setup
-
-### Prerequisites
-* Python 3.10+ and [uv package manager](https://github.com/astral-sh/uv)
-* Node.js v18+ and npm
-
-### 1. Environment Configuration
-Create a `.env` file at the root of the project:
-```env
-GROQ_API_KEY=your_groq_api_key
-GROQ_MODEL=llama-3.3-70b-versatile
-```
-
-### 2. Backend Setup
-Sync virtual environment dependencies and start the uvicorn server:
-```bash
-# Install dependencies
-uv sync
-
-# Run backend API
-uv run uvicorn rag.api:app --port 8000
-```
-The server will start running at `http://localhost:8000`.
-
-### 3. Frontend Setup
-Navigate to the frontend directory, install JavaScript dependencies, and run the Next.js dev server:
-```bash
-cd frontend
-
-# Install packages
-npm install
-
-# Run frontend (on port 3001 to prevent conflict with local Grafana)
-npm run dev -- -p 3001
-```
-Open **`http://localhost:3001`** in your browser to view the app.
 
 ---
 

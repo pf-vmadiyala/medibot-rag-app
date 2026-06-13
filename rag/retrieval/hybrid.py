@@ -60,16 +60,16 @@ def hybrid_search(query: str, role: str, limit: int = 10):
     return results
 
 
-if __name__ == "__main__":
-    test_query = "What is the policy for leaves?"
+# if __name__ == "__main__":
+#     test_query = "What is the policy for leaves?"
 
-    results_n = hybrid_search(test_query, role="nurse", limit=5)
-    for r in results_n:
-        print(len(r))
-        print("Score: "+ str(r["score"]))
-        print("Content: "+r["content"])
-        print("Metadata: "+str(r["metadata"]))
-        print("*" * 20)
+#     results_n = hybrid_search(test_query, role="nurse", limit=5)
+#     for r in results_n:
+#         print(len(r))
+#         print("Score: "+ str(r["score"]))
+#         print("Content: "+r["content"])
+#         print("Metadata: "+str(r["metadata"]))
+#         print("*" * 20)
 
     # results_b = hybrid_search(test_query, role="billing_executive", limit=5)
     # for r in results_b:
