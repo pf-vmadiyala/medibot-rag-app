@@ -43,6 +43,7 @@ Open **`http://localhost:3001`** in your browser to view the app.
 
 ### 4. Concurrent Startup (Alternative)
 For convenience, you can start both the FastAPI backend and Next.js frontend concurrently using a single command:
+But make sure uv sync and npm install is done before running this command
 
 * **macOS / Linux:**
   ```bash
